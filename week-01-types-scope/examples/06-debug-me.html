@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Debug me — Chrome DevTools practice</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+      label { display: block; margin: 0.5rem 0; }
+      input { width: 4rem; }
+      #result { font-size: 1.25rem; font-weight: bold; }
+      ol { background: #f4f4f4; padding: 1rem 2rem; border-radius: 8px; }
+    </style>
+  </head>
+  <body>
+    <h1>🐛 Debug me</h1>
+    <ol>
+      <li>Press <b>Calculate</b> with quantity 2 and bonus 1. The result is clearly wrong.</li>
+      <li>Open DevTools (<b>F12</b>) → <b>Sources</b> → find <code>06-debug-me.html</code> in the file tree.</li>
+      <li>Click the line number of <code>const items = ...</code> to set a breakpoint.</li>
+      <li>Press <b>Calculate</b> again. Hover over <code>quantity</code> and <code>bonus</code>. Look at their types in the <b>Scope</b> panel.</li>
+      <li>In the <b>Console</b> tab (while paused), type <code>typeof quantity</code>.</li>
+      <li>Explain the bug in one sentence. Then fix it in this file, reload, and check.</li>
+    </ol>
+
+    <p>Book — 10 EUR each. Every bonus item is free.</p>
+    <label>Quantity <input id="quantity" type="number" value="2" min="1" /></label>
+    <label>Bonus items <input id="bonus" type="number" value="1" min="0" /></label>
+    <button id="calculate">Calculate</button>
+    <p id="result"></p>
+
+    <script>
+      const PRICE = 10;
+
+      document.getElementById('calculate').addEventListener('click', () => {
+        const quantity = document.getElementById('quantity').value;
+        const bonus = document.getElementById('bonus').value;
+
+        const items = quantity + bonus;
+        const total = quantity * PRICE;
+
+        document.getElementById('result').textContent =
+          `You get ${items} books and pay ${total} EUR`;
+      });
+    </script>
+  </body>
+</html>

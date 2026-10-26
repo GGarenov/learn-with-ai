@@ -1,0 +1,11 @@
+{
+  "name": "learn-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "description": "8-week JavaScript fundamentals course: Junior → Mid",
+  "type": "module",
+  "scripts": {
+    "test:w0": "node --test \"week-00-diagnostic/**/*.test.js\"",
+    "test:w1": "node --test \"week-01-types-scope/**/*.test.js\""
+  }
+}
